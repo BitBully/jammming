@@ -17,9 +17,8 @@ class App extends Component {
         { id: 6, name: 'Jar of Hearts', artist: 'Christina Perri', album: 'lovestrong' },
         { id: 7, name: 'Golden Ring', artist: 'George Jones, Tammy Wynette', album: 'George Jones and Tammy Wynette' }
       ],
-      playlistName: 'Late Night Alt 2',
+      playlistName: 'New Playlist',
       playlistTracks: [
-        { id: 5, name: 'Cups', artist: 'Anna Kendrick', album: 'Ultimate Pitch Perfect (Original Soundtrack' }
       ]
      };
      this.addTrack = this.addTrack.bind(this);
