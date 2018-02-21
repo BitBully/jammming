@@ -13,16 +13,14 @@ class App extends Component {
         { name: 'Big Iron', artist: 'Marty Robbins', album: 'Gunfighter Ballads And Trail Songs' },
         { name: 'Faleena', artist: 'Marty Robbins', album: 'The Drifter' },
         { name: 'Mr. Shorty', artist: 'Marty Robbins', album: 'The Drifter' }
+      ],
+      playlistName: 'Late Night Alt 2',
+      playlistTracks: [
+        { name: 'Cups', artist: 'Anna Kendrick', album: 'Ultimate Pitch Perfect (Original Soundtrack' },
+        { name: 'Jar of Hearts', artist: 'Christina Perri', album: 'lovestrong' },
+        { name: 'Golden Ring', artist: 'George Jones, Tammy Wynette', album: 'George Jones and Tammy Wynette' }
       ]
      };
-    //  console.log('\nthis.state.searchResults: \n');
-    //  this.state.searchResults.map(track => {
-    //   console.log('     Track: ' + track.name + '\n');
-    //   console.log('    Artist: ' + track.artist + '\n');
-    //   console.log('     Album: ' + track.album + '\n\n');
-    //  });
-
-
   }
 
   render() {
@@ -33,7 +31,7 @@ class App extends Component {
           <SearchBar />
           <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResults} />
-            <Playlist />
+            <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} />
           </div>
         </div>
       </div>
