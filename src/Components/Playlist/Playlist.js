@@ -4,10 +4,11 @@ import TrackList from '../TrackList/TrackList';
 
 class Playlist extends Component {
     render() {
+        let isRemoval = true;
         return (
             <div className="Playlist">
                 <input defaultValue={this.props.playlistName}/>
-                <TrackList tracks={this.props.playlistTracks} />
+                <TrackList tracks={this.props.playlistTracks} isRemoval={isRemoval}/>
                 <a className="Playlist-save">SAVE TO SPOTIFY</a>
             </div>
         );

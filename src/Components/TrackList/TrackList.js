@@ -11,10 +11,13 @@ class TrackList extends Component {
         //     console.log('     Album: ' + track.album + '\n\n');
         //       });
 
+        let isRemoval = this.props.isRemoval;
+        // console.log('In TrackList.js, "isRemoval is ' + this.props.isRemoval + '\n');
+
         return (
             <div className="TrackList">
                 {this.props.tracks.map(track => {
-                    return <Track key={track.id} track={track} />
+                    return <Track key={track.id} track={track} isRemoval={isRemoval} />
                 })}
             </div>
         );
