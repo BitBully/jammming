@@ -23,6 +23,7 @@ class App extends Component {
       ]
      };
      this.addTrack = this.addTrack.bind(this);
+     this.removeTrack = this.removeTrack.bind(this);
   }
 
   addTrack(track) {
@@ -37,14 +38,14 @@ class App extends Component {
     this.setState( { playlistTracks: this.state.playlistTracks } );
   }
 
+  removeTrack(track) {
+    // let trkId = track.id;
+    let newList = this.state.playlistTracks.filter(trk => trk.id !== track.id);
+    this.setState( { playlistTracks: newList } );
+
+  }
+
   render() {
-    // this.addTrack(this.state.searchResults[0]);
-    // this.addTrack(this.state.searchResults[1]);
-    // this.addTrack(this.state.searchResults[2]);
-    // this.addTrack(this.state.searchResults[3]);
-    // this.addTrack(this.state.searchResults[4]);
-    // this.addTrack(this.state.searchResults[5]);
-    // this.addTrack(this.state.searchResults[6]);
     return (
       <div>
         <h1>Ja<span className="highlight">mmm</span>ing</h1>
@@ -52,7 +53,7 @@ class App extends Component {
           <SearchBar />
           <div className="App-playlist">
             <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack} />
-            <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} />
+            <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks} onRemove={this.removeTrack} />
           </div>
         </div>
       </div>
