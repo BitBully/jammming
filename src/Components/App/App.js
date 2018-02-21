@@ -26,22 +26,13 @@ class App extends Component {
   }
 
   addTrack(track) {
-    // console.log('In "App.addTrack()", track ID is ' + track.id + '\n');
-    let trkId = track.id;
-    let trkNdx = this.state.playlistTracks.filter(trk => {
-      return (trkId === trk.id);
-    });
-    if (trkNdx.length < 1) {
-      this.state.playlistTracks.push(track);
-    };
+    let ndx = this.state.playlistTracks.findIndex(trk => trk.id === track.id);
+    if (ndx < 0) { this.state.playlistTracks.push(track); }
     this.setState( { playlistTracks: this.state.playlistTracks } );
   }
 
   removeTrack(track) {
-    // let trkId = track.id;
-    let newList = this.state.playlistTracks.filter(trk => trk.id !== track.id);
-    this.setState( { playlistTracks: newList } );
-
+    this.setState( { playlistTracks: this.state.playlistTracks.filter(trk => trk.id !== track.id) });
   }
 
   render() {
