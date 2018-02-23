@@ -8,7 +8,7 @@ class SearchResults extends Component {
         let isRemoval = false;
         return (
             <div className="SearchResults">
-                <h2>Results (SearchResults.js)</h2>
+                <h2>Search Results</h2>
                 <TrackList tracks={this.props.searchResults} isRemoval={isRemoval} onAdd={this.props.onAdd} />
             </div>
         );

@@ -10,13 +10,13 @@ class App extends Component {
     super(props);
     this.state = {
       searchResults: [
-        { id: 1, name: 'El Paso', artist: 'Marty Robbins', album: 'Gunfighter Ballads And Trail Songs' },
-        { id: 2, name: 'Big Iron', artist: 'Marty Robbins', album: 'Gunfighter Ballads And Trail Songs' },
-        { id: 3, name: 'Faleena', artist: 'Marty Robbins', album: 'The Drifter' },
-        { id: 4, name: 'Mr. Shorty', artist: 'Marty Robbins', album: 'The Drifter' },
-        { id: 5, name: 'Cups', artist: 'Anna Kendrick', album: 'Ultimate Pitch Perfect (Original Soundtrack' },
-        { id: 6, name: 'Jar of Hearts', artist: 'Christina Perri', album: 'lovestrong' },
-        { id: 7, name: 'Golden Ring', artist: 'George Jones, Tammy Wynette', album: 'George Jones and Tammy Wynette' }
+        // { id: 1, name: 'El Paso', artist: 'Marty Robbins', album: 'Gunfighter Ballads And Trail Songs' },
+        // { id: 2, name: 'Big Iron', artist: 'Marty Robbins', album: 'Gunfighter Ballads And Trail Songs' },
+        // { id: 3, name: 'Faleena', artist: 'Marty Robbins', album: 'The Drifter' },
+        // { id: 4, name: 'Mr. Shorty', artist: 'Marty Robbins', album: 'The Drifter' },
+        // { id: 5, name: 'Cups', artist: 'Anna Kendrick', album: 'Ultimate Pitch Perfect (Original Soundtrack' },
+        // { id: 6, name: 'Jar of Hearts', artist: 'Christina Perri', album: 'lovestrong' },
+        // { id: 7, name: 'Golden Ring', artist: 'George Jones, Tammy Wynette', album: 'George Jones and Tammy Wynette' }
       ],
       playlistName: 'New Playlist',
       playlistTracks: [
@@ -30,9 +30,12 @@ class App extends Component {
   }
 
   search(term) {
-    console.log('[App.search] term is ' + term);
-    let tkn = Spotify.getAccessToken();
-    console.log('    token: ' + tkn + '\n');
+    // console.log('[App.search] term is ' + term);
+    if (term === '') {
+      this.setState( { searchResults: [] } );
+    } else {
+      Spotify.search(term).then(searchResults => { this.setState({ searchResults: searchResults });});
+    }
   }
 
   addTrack(track) {
