@@ -10,13 +10,6 @@ class App extends Component {
     super(props);
     this.state = {
       searchResults: [
-        // { id: 1, name: 'El Paso', artist: 'Marty Robbins', album: 'Gunfighter Ballads And Trail Songs' },
-        // { id: 2, name: 'Big Iron', artist: 'Marty Robbins', album: 'Gunfighter Ballads And Trail Songs' },
-        // { id: 3, name: 'Faleena', artist: 'Marty Robbins', album: 'The Drifter' },
-        // { id: 4, name: 'Mr. Shorty', artist: 'Marty Robbins', album: 'The Drifter' },
-        // { id: 5, name: 'Cups', artist: 'Anna Kendrick', album: 'Ultimate Pitch Perfect (Original Soundtrack' },
-        // { id: 6, name: 'Jar of Hearts', artist: 'Christina Perri', album: 'lovestrong' },
-        // { id: 7, name: 'Golden Ring', artist: 'George Jones, Tammy Wynette', album: 'George Jones and Tammy Wynette' }
       ],
       playlistName: 'New Playlist',
       playlistTracks: [
@@ -27,6 +20,7 @@ class App extends Component {
      this.updatePlaylistName = this.updatePlaylistName.bind(this);
      this.savePlaylist = this.savePlaylist.bind(this);
      this.search = this.search.bind(this);
+     Spotify.getAccessToken();
   }
 
   search(term) {
@@ -54,7 +48,12 @@ class App extends Component {
 
   savePlaylist() {
     let trackURIs = this.state.playlistTracks.map(track => track.id);
-    console.log('[App.savePlaylist] trackURIs is ' + trackURIs);
+    // console.log('[App.savePlaylist] trackURIs is ' + trackURIs);
+    Spotify.savePlaylist(this.state.playlistName,trackURIs);
+    this.setState( { playlistName: 'New Playlist' } );
+    this.updatePlaylistName('New Playlist');
+    this.setState( { searchResults: [] } );
+    this.setState( { playlistTracks: [] } );
   }
 
   render() {
