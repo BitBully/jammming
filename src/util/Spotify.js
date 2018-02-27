@@ -71,22 +71,24 @@ const Spotify = {
             console.log(networkError.message);
         }).then(jsonResponse => {
             if (jsonResponse.tracks) {
-                // console.log('jsonResonse.tracks.items: ' + jsonResponse.tracks.items);
-                // jsonResponse.tracks.items.forEach(track => {
-                //     console.log('  Track Info');
-                //     console.log('        id: ' + track.id);
-                //     console.log('      name: ' + track.name);
-                //     console.log('    artist: ' + track.artists[0].name);
-                //     console.log('     album: ' + track.album.name);
-                //     console.log('       uri: ' + track.uri);
-                //     console.log('\n\n');
-                // });
+                console.log('jsonResonse.tracks.items: ' + jsonResponse.tracks.items);
+                jsonResponse.tracks.items.forEach(track => {
+                    console.log('  Track Info');
+                    console.log('            id: ' + track.id);
+                    console.log('          name: ' + track.name);
+                    console.log('        artist: ' + track.artists[0].name);
+                    console.log('         album: ' + track.album.name);
+                    console.log('           uri: ' + track.uri);
+                    console.log('   preveiw_url: ' + track.preview_url);
+                    console.log('\n\n');
+                });
                 return jsonResponse.tracks.items.map(track => ({
                     id: track.id,
                     name: track.name,
                     artist: track.artists[0].name,
                     album: track.album.name,
-                    uri: track.uri
+                    uri: track.uri,
+                    preview_url: track.preview_url
                 }));
             }
         });

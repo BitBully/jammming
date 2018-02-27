@@ -32,7 +32,7 @@ class Track extends Component {
         return (
             <div className="Track">
                 <div className="Track-information">
-                    <h3>{this.props.track.name}</h3>
+                    <a href={this.props.track.preview_url} target="_blank"><h3>{this.props.track.name}</h3></a>
                     <p>{this.props.track.artist} | {this.props.track.album}</p>
                 </div>
                 {this.renderAction()}
